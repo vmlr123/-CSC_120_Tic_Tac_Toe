@@ -27,7 +27,24 @@ def print_board():
             print()
 
 
+def check_win(mark, player_id):
+    if board[1] == mark and board[2] == mark and board[3] == mark or \
+            board[4] == mark and board[5] == mark and board[6] == mark or \
+            board[7] == mark and board[8] == mark and board[9] == mark or \
+            board[1] == mark and board[4] == mark and board[7] == mark or \
+            board[2] == mark and board[5] == mark and board[8] == mark or \
+            board[3] == mark and board[6] == mark and board[9] == mark or \
+            board[1] == mark and board[5] == mark and board[9] == mark or \
+            board[3] == mark and board[5] == mark and board[7] == mark:
 
+        print_board()
+        time.sleep(1)
+        print("Player", player_id, "wins")
+        return True
+        quit()
+
+    else:
+        return False
 
 
 def insert_input(slot_num, mark):
@@ -50,3 +67,8 @@ while play:
     insert_input(input_slot, player_details[1])
     count += 1
 
+    winner = check_win(player_details[1], current_player)
+    if count == 9 and not winner:
+        print("Tie")
+        tie = True
+        print_board()
