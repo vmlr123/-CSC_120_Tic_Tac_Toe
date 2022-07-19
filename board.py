@@ -41,7 +41,6 @@ def check_win(mark, player_id):
         time.sleep(1)
         print("Player", player_id, "wins")
         return True
-        quit()
 
     else:
         return False
@@ -68,6 +67,8 @@ while play:
     count += 1
 
     winner = check_win(player_details[1], current_player)
+    if winner:
+        play = False
     if count == 9 and not winner:
         print("Tie")
         tie = True
